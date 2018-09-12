@@ -1,0 +1,288 @@
+create images folder - /myamiImages
+Registration Key confirmed.
+#===================================================
+Run the following Command:
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y update yum*
+--- Run Command Error ---
+Warning: RPMDB altered outside of yum.
+
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y install yum-fastestmirror.noarch yum-utils.noarch
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y update
+--- Run Command Error ---
+/sbin/ldconfig: Cannot lstat /lib64/libgio-2.0.so.0.4600.2: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libglib-2.0.so.0.4600.2: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libgmodule-2.0.so.0.4600.2: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libgobject-2.0.so.0.4600.2: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libgthread-2.0.so.0.4600.2: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libp11-kit.so.0.0.0: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libtasn1.so.6.2.3: No such file or directory
+Error in PREIN scriptlet in rpm package 2:nodejs-6.14.1-1nodesource.x86_64
+/sbin/ldconfig: Cannot lstat /lib64/libasm-0.166.so: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libbfd-2.25.1-22.base.el7.so: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libcrypto.so.1.0.1e: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libdw-0.166.so: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libelf-0.166.so: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libgio-2.0.so.0.4600.2: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libglib-2.0.so.0.4600.2: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libgmodule-2.0.so.0.4600.2: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libgobject-2.0.so.0.4600.2: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libgthread-2.0.so.0.4600.2: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/liblber-2.4.so.2.10.3: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libldap-2.4.so.2.10.3: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libldap_r-2.4.so.2.10.3: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libopcodes-2.25.1-22.base.el7.so: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libp11-kit.so.0.0.0: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libslapi-2.4.so.2.10.3: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libssl.so.1.0.1e: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libtasn1.so.6.2.3: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libgd.so.3.0.4: No such file or directory
+/sbin/ldconfig: Cannot lstat /lib64/libnetfilter_conntrack.so.3.5.0: No such file or directory
+2:nodejs-6.9.4-1nodesource.el7.centos.x86_64 was supposed to be removed but is not!
+
+#===================================================
+
+yum update finished..
+#===================================================
+Run the following Command:
+yum -y install git
+--- Run Command Error ---
+Failed to set locale, defaulting to C
+
+#===================================================
+
+#===================================================
+Run the following Command:
+git clone http://emg.nysbc.org/git/myami /tmp/myami/
+#===================================================
+
+--- Start install Job Server
+#===================================================
+Run the following Command:
+yum -y install torque-server torque-scheduler
+--- Run Command Error ---
+Failed to set locale, defaulting to C
+
+#===================================================
+
+
+Warning: /var/lib/torque/server_priv/nodes not found.
+
+--- Start install Processing Server
+#===================================================
+Run the following Command:
+yum -y install ImageMagick MySQL-python compat-gcc-34-g77 fftw3-devel gcc-c++ gcc-gfortran gcc-objc gnuplot grace gsl-devel libtiff-devel netpbm-progs numpy openmpi-devel opencv-python python-devel python-imaging python-matplotlib python-tools scipy wxPython xorg-x11-server-Xvfb libjpeg-devel zlib-devel
+--- Run Command Error ---
+Failed to set locale, defaulting to C
+
+#===================================================
+
+#===================================================
+Run the following Command:
+which mpirun
+--- Run Command Error ---
+which: no mpirun in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin)
+
+#===================================================
+
+#===================================================
+Run the following Command:
+locate mpirun
+--- Run Command Error ---
+/bin/sh: locate: command not found
+
+#===================================================
+
+Failed to enable mpirun: link source not found
+#===================================================
+Run the following Command:
+yum install -y python-pip
+--- Run Command Error ---
+Failed to set locale, defaulting to C
+
+#===================================================
+
+#===================================================
+Run the following Command:
+pip install joblib==0.10.3
+--- Run Command Error ---
+You are using pip version 8.1.2, however version 10.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+
+#===================================================
+
+#===================================================
+Run the following Command:
+./pysetup.sh install
+#===================================================
+
+#===================================================
+Run the following Command:
+python -c "import sys;print sys.prefix"
+#===================================================
+
+#===================================================
+Run the following Command:
+python setup.py install --install-scripts=/usr/bin/appion
+#===================================================
+
+setup Leginon configuration file
+create leginon configuration folder - /etc/myami
+setup Sinedon configuration file
+#===================================================
+Run the following Command:
+python -c "import sinedon; print sinedon.__path__[0]"
+--- Run Command Error ---
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python2.7/site-packages/sinedon/__init__.py", line 23, in <module>
+    from data import Data
+  File "/usr/lib/python2.7/site-packages/sinedon/data.py", line 12, in <module>
+    import dbdatakeeper
+  File "/usr/lib/python2.7/site-packages/sinedon/dbdatakeeper.py", line 10, in <module>
+    import sqldict
+  File "/usr/lib/python2.7/site-packages/sinedon/sqldict.py", line 151, in <module>
+    import sqlexpr
+  File "/usr/lib/python2.7/site-packages/sinedon/sqlexpr.py", line 59, in <module>
+    import dbconfig
+  File "/usr/lib/python2.7/site-packages/sinedon/dbconfig.py", line 15, in <module>
+    pyami.fileutil.check_exist_one_file(config_locations)
+  File "/usr/lib/python2.7/site-packages/pyami/fileutil.py", line 97, in check_exist_one_file
+    raise IOError(msg)
+IOError: please configure at least one of these:  ['/etc/myami/sinedon.cfg', '/usr/lib/python2.7/site-packages/sinedon/sinedon.cfg', '/root/sinedon.cfg']
+
+#===================================================
+
+setup .appion.cfg configuration file
+#===================================================
+Run the following Command:
+python -c "import pyscope; print pyscope.__path__[0]"
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y install torque-mom torque-client
+--- Run Command Error ---
+Failed to set locale, defaulting to C
+
+#===================================================
+
+#===================================================
+Run the following Command:
+systemctl enable pbs_mom
+--- Run Command Error ---
+Created symlink /etc/systemd/system/multi-user.target.wants/pbs_mom.service, pointing to /usr/lib/systemd/system/pbs_mom.service.
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s s scheduling=true"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "c q batch queue_type=execution"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s q batch started=true"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s q batch enabled=true"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s q batch resources_default.nodes=1"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s q batch resources_default.walltime=3600"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s s default_queue=batch"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+systemctl start pbs_mom
+--- Run Command Error ---
+Failed to get D-Bus connection: Operation not permitted
+
+#===================================================
+
+--- Start install Database Server
+#===================================================
+Run the following Command:
+rpm -Uvh http://repo.mysql.com/mysql57-community-release-el7.rpm
+--- Run Command Error ---
+warning: /var/tmp/rpm-tmp.RRw706: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY
+
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y install mysql-server php php-mysql
+--- Run Command Error ---
+Failed to set locale, defaulting to C
+
+#===================================================
+
+#===================================================
+Run the following Command:
+systemctl enable mysqld
+--- Run Command Error ---
+Operation failed: Too many levels of symbolic links
+
+#===================================================
+
+#===================================================
+Run the following Command:
+php /tmp/myami/install/newDBsetup.php -L leginondb -P projectdb -H localhost -U root -E Juan.Castillo@biophys.mpg.de
