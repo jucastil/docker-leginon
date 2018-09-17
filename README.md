@@ -1,54 +1,40 @@
-# Leginon CentOS Docker LAMP
-A Leginon CentOS 7 Docker LAMP is meant to install a local leginon webserver (myamiweb) running on Linux, Windows or Mac as everything is in one container.
+# Docker Leginon : A CentOS 7 php 5.6 LAMP with a leginon webserver
+A Leginon CentOS 7 Docker to install a leginon webserver (myamiweb) running on Linux, Windows or Mac.
 
 # Features
-- Runs as a Docker Container
-- CentOS 7
-- Apache 2.4 (w/ SSL)
-- MariaDB 10.1
-- PHP 7.0 or 5.6
-- EXIM
-- SSH
-- phpMyAdmin
-- Git
-- Drush
-- NodeJS
+- CentOS 7 Docker Container , Apache 2.4 (w/ SSL), MariaDB 10.1
+- PHP **5.6**, EXIM, ssh, phpMyAdmin, Git, Drush, NodeJS
 
 # Installation on CentOS 7 client incluing docker
 
 **NOTE**: all the commands must be run by ROOT.   
 
-Be sure you can run docker on your client.  
-``yum install docker docker-ce docker-ce-edge docker-ce-test``  
-
-Start the docker daemon  
-``systemctl start docker`` 
+Network configuration. 
+- Check the network configuration : ``ifconfig -a`` . Make a note of it.  
+- Install the docker daemon:``yum install docker``      
+- Start the docker daemon: ``systemctl start docker``  
+- Check the network configuration again. You should have a new **bridge**.   
  
 Create a VLAN interface for your docker.  
 - Open the network manager (nnm-connection-editor) and add a new connection    
-- Select new (virtual) VLAN, choose as a Parent interface the one connected now  
-- Fill up the VLAN ID, inteface name and connection name as you like  
-- Give it an IP **on your network**. For example, 192.168.10.10      
-- Make it up (ifup vlan-interface-name)  
+- Select new (virtual) VLAN, choose a Parent interface  
+- Fill up the VLAN ID, give it a meaningful inteface name (for example, em1) and connection name    
+- Give it an IP **on your network**. For example, 192.168.0.4      
+- Make it up: ``ifup docker-vlan-interface-name``  
 - Test you can ping it  
 
-Download the docker.     
-``git clone https://github.com/jucastil/docker-leginon.git``  
-CD into the new folder docker-leginon, start the container.  
-This may take time, since the CentOS 7 image is downloaded.  
+Download the docker: ``git clone https://github.com/jucastil/docker-leginon.git``  
+CD into the new folder docker-leginon, start the container.    
 ``./start-sbleginon.sh dockername hostname DOCKER-IP``  
+For example: ``./start-sbleginon.sh sbleginon sbleginon 192.168.0.4`` 
 
-To access the web server visit [https://localhost:8443](https://localhost:8443) for SSL or [http://localhost:8080](http://localhost:8080) for no SSL.
-
-To access phpMyadmin visit [https://localhost:8080/phpmyadmin](https://localhost:8080/phpmyadmin)
-
-Attach to the container by running:
-`sudo docker exec -i -t "your container id" /bin/bash`
-
-SSH to the container by running:
-`ssh root@localhost -p 8022` Use password: docker. For Windows and Mac substitute `localhost` with the IP of your docker.
-
-Put your web code in /var/www/html/ inside the docker.
+Check it runs, ssh to it, check the services.     
+- ``docker ps -a`` should show **dockername** as running.
+- To ssh in, type ``ssh -Y root@DOCKER-IP``. Default root password is **docker**. Change it (passwd).
+- To access the web server visit [https://localhost:8443](https://localhost:8443) for SSL or [http://localhost:8080](http://localhost:8080) for no SSL.
+- To access phpMyadmin visit [https://localhost:8080/phpmyadmin](https://localhost:8080/phpmyadmin)
+- Attach to the container by running: ``docker exec -i -t dockername /bin/bash``
+- 
 
 # Example Usage with Data Outside of Docker
 
