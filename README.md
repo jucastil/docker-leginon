@@ -16,10 +16,22 @@ A Leginon CentOS 7 Docker LAMP is meant to install a local leginon webserver (my
 
 # Installation on CentOS 7 client incluing docker
 
+**NOTE**: all the commands must be run by ROOT.   
+
 Be sure you can run docker on your client.  
 ``yum install docker docker-ce docker-ce-edge docker-ce-test``  
+
 Start the docker daemon  
-``systemctl start docker``  
+``systemctl start docker`` 
+ 
+Create a VLAN interface for your docker.  
+- Open the network manager (nnm-connection-editor) and add a new connection    
+- Select new (virtual) VLAN, choose as a Parent interface the one connected now  
+- Fill up the VLAN ID, inteface name and connection name as you like  
+- Give it an IP **on your network**. For example, 192.168.10.10      
+- Make it up (ifup vlan-interface-name)  
+- Test you can ping it  
+
 Download the docker.     
 ``git clone https://github.com/jucastil/docker-leginon.git``  
 CD into the new folder docker-leginon, start the container.  
