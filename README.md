@@ -14,13 +14,19 @@ A Leginon CentOS 7 Docker LAMP is meant to install a local leginon webserver (my
 - Drush
 - NodeJS
 
-# Example Usage with Data Inside Docker
+# Example installation incluing docker
 
- Download and run this container with: 
-``docker run -d -p 8080:80 -p 8443:443 -p 8022:22 -t otherdata/centos-docker-lamp:latest``
+Be sure you can run docker on your client.
+``yum install docker docker-ce docker-ce-edge docker-ce-test``
+``systemctl start docker``
 
-Or to run it with older PHP 5.6 run the container with:
-``docker run -d -p 8080:80 -p 8443:443 -p 8022:22 -t otherdata/centos-docker-lamp:5.6``
+Download the docker construct. 
+``git clone https://github.com/jucastil/docker-leginon.git``
+
+CD into the new folder docker-leginon, start the container.
+This may take tinme, since the CentOS 7 image is downloaded.
+
+``./start-sbleginon.sh dockername hostname DOCKER-IP``
 
 To access the web server visit [https://localhost:8443](https://localhost:8443) for SSL or [http://localhost:8080](http://localhost:8080) for no SSL.
 
