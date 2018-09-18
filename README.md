@@ -44,8 +44,10 @@ First checks on the container.
 
 Configuration of leginon in the docker-leginon.    
 - Configuration is done with the files inside the install folder. The install folder is shared, so everything you put there will be available inside the container. Check that you can "ls" it on both.
-- Ssh inside the container, run ``python centos7AutoInstallation.py``. Answer the questions...
- 
+- Ssh inside the container, run ``python centos7AutoInstallation.py``. This is a customized version of the [http://emg.nysbc.org/redmine/projects/leginon/wiki/Autoinstaller_for_CentOS](Autoinstaller for CentOS) available on the [http://emg.nysbc.org/redmine/projects/leginon/wiki/Complete_Installation](Complete Installation) official page. Don't forget to ask there for a *registration key*!   
+- My answers the questions GroEL and EMAN, Xmipp, Spider and Protomo is *N*  
+
+
 
 # Example Usage with Data Outside of Docker
 
