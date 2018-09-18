@@ -47,7 +47,7 @@ Configuration of leginon in the docker-leginon.
 - Configuration is done with the files inside the **install** folder. Check that you can "ls" from inside and outside the docker.
 - Ssh to your container, cd to **install** and run ``./extra-config.sh``. Before running it, **you need to have a registration key**. 
 
-What the script does, in this order   
+What ``./extra-config.sh`` does, in this order   
   * Setup all the root **PASSWORDS**. 
   * Copy __config.inc.php.phpMyAdmin.docker__ to protect the phpmyadmin web interface
   * Copy __my.cnf.docker__ to setup the right cache limits 
@@ -63,19 +63,9 @@ Final checks and the Web Tools Setut Wizard
 - Open the browser pointing to  [https://DOCKER-IP/myamiweb/setup](https://DOCKER-IP/myamiweb/setup)  
 - User **usr_object**, password **DOCKERLEGINON**
 
-# Example Usage with Data Outside of Docker
+# Mac OSX Installation
 
-Create a project folder and database folder:
-`mkdir -p project/database && mkdir -p project/html`
+We start with a clean OSX 10.13.6 (High Sierra).  
+We are not going to configure it so that it runs over a specific interface.  
 
-Move into the project folder:
-`cd project`
 
-Run the command to launch the docker and map project and database directory:
-``docker run -d -p 8080:80 -p 8443:443 -p 8022:22 -v `pwd`/html:/var/www/html -v `pwd`/database:/var/lib/phpMyAdmin/upload -t otherdata/centos-docker-lamp:latest``
-
-You can now move a copy of your Drupal or WordPress files into the html folder and move an .sql dump into the database folder, or upload it using phpMyAdmin. 
-
-To access the web server visit [https://localhost:8443](https://localhost:8443) for SSL or [http://localhost:8080](http://localhost:8080) for no SSL.
-
-To access phpMyadmin visit [https://localhost:8080/phpmyadmin](https://localhost:8080/phpmyadmin)
