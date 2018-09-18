@@ -45,15 +45,17 @@ First checks on the container.
 
 Configuration of leginon in the docker-leginon.    
 - Configuration is done with the files inside the **install** folder. Check that you can "ls" from inside and outside the docker.
-- Ssh to your container, cd to **install** and run ``./extra-config.sh``. Before running it, **you need to have a registration key**. What the script does, in this order   
-* Setup all the root **PASSWORDS**. 
-* Copy __config.inc.php.phpMyAdmin.docker__ to protect the phpmyadmin web interface
-* Copy __my.cnf.docker__ to setup the right cache limits 
-* Install missing packages via yum  
-* Run the php script __leginon-db-config.php__ to setup the database (it can fail)
-* Run the  __centos7AutoInstallation.py__  a wrap over the official[Autoinstaller CentOS](http://emg.nysbc.org/redmine/projects/leginon/wiki/Autoinstaller_for_CentOS) available on the [Complete Install](http://emg.nysbc.org/redmine/projects/leginon/wiki/Complete_Installation) page.
-* My answers the questions GroEL and EMAN, Xmipp, Spider and Protomo is **N**  
-* Copy __config.php.myamiweb.docker__ to initialize myamiweb (it will be configured later)
+- Ssh to your container, cd to **install** and run ``./extra-config.sh``. Before running it, **you need to have a registration key**. 
+
+What the script does, in this order   
+  * Setup all the root **PASSWORDS**. 
+  * Copy __config.inc.php.phpMyAdmin.docker__ to protect the phpmyadmin web interface
+  * Copy __my.cnf.docker__ to setup the right cache limits 
+  * Install missing packages via yum  
+  * Run the php script __leginon-db-config.php__ to setup the database (it can fail)
+  * Run the  __centos7AutoInstallation.py__  a wrap over the official[Autoinstaller CentOS](http://emg.nysbc.org/redmine/projects/leginon/wiki/Autoinstaller_for_CentOS) available on the [Complete Install](http://emg.nysbc.org/redmine/projects/leginon/wiki/Complete_Installation) page.
+  * My answers the questions GroEL and EMAN, Xmipp, Spider and Protomo is **N**  
+  * Copy __config.php.myamiweb.docker__ to initialize myamiweb (it will be configured later)
 
 **Time for a coffee..** the installation can take like 30 minutes. 
 
