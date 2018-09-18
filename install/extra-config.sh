@@ -35,11 +35,15 @@ echo "	Database Configuration and checks"
 echo
 echo " 	-------------------------------------"
 echo ""
-php -f leginon-db-config.php
+echo "	"
+echo -n " 	Please setup NOW the localhost password"
+read leginonpasswd
+echo "	Configuring localhost database"
+php -f leginon-db-config.php localhost leginonpasswd
 echo ""
 echo " 	-------------------------------------"
 echo 
-echo "	Testing user usr_object, default password: BIOLBIOL"
+echo "	Testing user usr_object, default password localhost password"
 echo " "
 echo " 	A MariaDB prompt will open, please"
 echo "		copy: SHOW VARIABLES LIKE 'query%'; "

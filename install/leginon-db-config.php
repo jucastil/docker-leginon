@@ -1,5 +1,5 @@
 <?php    
-     	$connection = mysql_connect( "127.0.0.1", "root", "biol\$str" ) 
+     	$connection = mysql_connect("$argv[1]", "root","$argv[2]" ) 
 		or die( "Sorry - unable to connect to MySQL" );
  	echo( "		Congratulations - you are connected to MySQL \n" );
 	echo( "		Creating initial databases and users \n" );
