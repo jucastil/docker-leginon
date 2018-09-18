@@ -39,18 +39,21 @@ First checks on the container.
 - Check it's running ``docker ps -a`` should show **dockername** as running.
 - Ssh in. Type ``ssh -Y root@DOCKER-IP -p 2222``. Default root password is **docker**. 
 - Logged in as root, change the root password by typing ``passwd``.
-- Check you have internet access from inside. Logged in as root, ``ping www.google.com``  
+- Check you have **internet access** from inside. This is needed by the installer.``ping www.google.com``  
 - Check the web server. Visit [https://DOCKER-IP:8443](https://DOCKER-IP:8443) for SSL or [http://DOCKER-IP:8080](http://DOCKER-IP:8080) for no SSL.
 - Check phpMyadmin : visit [https://DOCKER-IP:8080/phpmyadmin](https://DOCKER-IP:8080/phpmyadmin)
-- Attach the sheel to your container by running: ``docker exec -i -t dockername /bin/bash``
+- Attach your shell to your container by running: ``docker exec -i -t dockername /bin/bash``
 
 Configuration of leginon in the docker-leginon.    
 - Configuration is done with the files inside the install folder. The install folder is shared, so everything you put there will be available inside the container. Check that you can "ls" it on both.
-- Ssh inside the container, run ``python centos7AutoInstallation.py``. This is a customized version of the (http://emg.nysbc.org/redmine/projects/leginon/wiki/Autoinstaller_for_CentOS)[Autoinstaller_CentOS] available on the (http://emg.nysbc.org/redmine/projects/leginon/wiki/Complete_Installation)[Complete_Install] official page. Don't forget to ask there for a *registration key*!   
+- Ssh inside the container, run ``python centos7AutoInstallation.py``. This is a customized version of the [Autoinstaller CentOS] (http://emg.nysbc.org/redmine/projects/leginon/wiki/Autoinstaller_for_CentOS) available on the [Complete Install](http://emg.nysbc.org/redmine/projects/leginon/wiki/Complete_Installation) official page. Don't forget to ask there for a *registration key*!   
 - My answers the questions GroEL and EMAN, Xmipp, Spider and Protomo is *N*  
 
-Time for a coffee...
+**Time for a coffee..** the installation can take like 30 minutes. 
 
+Final checks and the Web Tools Setut Wizard
+- Open the browser pointing to  [https://DOCKER-IP/myamiweb/setup](https://DOCKER-IP/myamiweb/setup)  
+- User **usr_object**, password **DOCKERLEGINON**
 
 # Example Usage with Data Outside of Docker
 
