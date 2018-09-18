@@ -1,39 +1,48 @@
-# Docker Leginon : A CentOS 7 php 5.6 LAMP with a leginon webserver
-A Leginon CentOS 7 Docker to install a leginon webserver (myamiweb) running on Linux, Windows or Mac.
-
-# Features
+# A docker Leginon on CentOS 7
+A leginon CentOS 7 docker to install a leginon webserver (myamiweb).  
+To be running on Linux, Windows or Mac. Features:  
 - CentOS 7 Docker Container , Apache 2.4 (w/ SSL), MariaDB 10.1
 - PHP **5.6**, EXIM, ssh, phpMyAdmin, Git, Drush, NodeJS
 
-# Installation on CentOS 7 client incluing docker
+# CentOS 7 Installation
 
+We start with a clean CentOS 7 system:  
+- Updated to the latest kernel (now 3.10.0-862.11.6.el7.x86_64) 
+- With **selinux** deactivated (edit ``/etc/selinux/config``, choose disabled, reboot)  
+- With two network interfaces (one for the **leginon** network)
+- Docker not installed (we will install it here) 
+ 
 **NOTE**: all the commands must be run by ROOT.   
 
-Network configuration. 
-- Check the network configuration : ``ifconfig -a`` . Make a note of it.  
+Network configuration checks:     
+- Write down your current network configuration : ``ifconfig -a`` .  
 - Install the docker daemon:``yum install docker``      
 - Start the docker daemon: ``systemctl start docker``  
-- Check the network configuration again. You should have a new **bridge**.   
+- Check the network configuration again. You should have a new **bridge** to controls the dockers.   
  
-Create a VLAN interface for your docker.  
-- Open the network manager (nnm-connection-editor) and add a new connection    
-- Select new (virtual) VLAN, choose a Parent interface  
-- Fill up the VLAN ID, give it a meaningful inteface name (for example, em1) and connection name    
-- Give it an IP **on your network**. For example, 192.168.0.4      
-- Make it up: ``ifup docker-vlan-interface-name``  
-- Test you can ping it  
+Create a new VLAN interface for your docker.  
+- Open the network manager (``nm-connection-editor``) and add a new connection    
+- Select new (virtual) VLAN, choose as a Parent interface the one of your **leginon** network    
+- Fill up the VLAN ID, give it a meaningful inteface name (for example, leg-em1) and connection name    
+- Give it an IP **on the leginon network**. For example, 192.168.0.4      
+- Make it up: ``ifup leg-em1``  
+- Test you can ping the IP of ot  
 
-Download the docker: ``git clone https://github.com/jucastil/docker-leginon.git``  
-CD into the new folder docker-leginon, start the container.    
+Initial docker-leginon install
+- Choose a folder where the docker will lay  
+- Download the docker: ``git clone https://github.com/jucastil/docker-leginon.git``  
+- Go into the newly created folder **docker-leginon**, start the docker-leginon.    
 ``./start-sbleginon.sh dockername hostname DOCKER-IP``  
 For example: ``./start-sbleginon.sh sbleginon sbleginon 192.168.0.4`` 
 
-Check it runs, ssh to it, check the services.     
-- ``docker ps -a`` should show **dockername** as running.
-- To ssh in, type ``ssh -Y root@DOCKER-IP``. Default root password is **docker**. Change it (passwd).
-- To access the web server visit [https://localhost:8443](https://localhost:8443) for SSL or [http://localhost:8080](http://localhost:8080) for no SSL.
-- To access phpMyadmin visit [https://localhost:8080/phpmyadmin](https://localhost:8080/phpmyadmin)
-- Attach to the container by running: ``docker exec -i -t dockername /bin/bash``
+First checks on the container.    
+- Check it's running ``docker ps -a`` should show **dockername** as running.
+- Ssh in. Type ``ssh -Y root@DOCKER-IP -p 2222``. Default root password is **docker**. Once you're logged in as root, you can change the password by typing ``passwd``.
+- Check the web server. Visit [https://DOCKER-IP:8443](https://DOCKER-IP:8443) for SSL or [http://DOCKER-IP:8080](http://DOCKER-IP:8080) for no SSL.
+- Check phpMyadmin : visit [https://DOCKER-IP:8080/phpmyadmin](https://DOCKER-IP:8080/phpmyadmin)
+- Attach the sheel to your container by running: ``docker exec -i -t dockername /bin/bash``
+
+Configuration of leginon on the docker-leginon  
 - 
 
 # Example Usage with Data Outside of Docker
