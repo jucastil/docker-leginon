@@ -42,8 +42,10 @@ First checks on the container.
 - Check phpMyadmin : visit [https://DOCKER-IP:8080/phpmyadmin](https://DOCKER-IP:8080/phpmyadmin)
 - Attach the sheel to your container by running: ``docker exec -i -t dockername /bin/bash``
 
-Configuration of leginon on the docker-leginon  
-- 
+Configuration of leginon in the docker-leginon.    
+- Configuration is done with the files inside the install folder. The install folder is shared, so everything you put there will be available inside the container. Check that you can "ls" it on both.
+- Ssh inside the container, run ``python centos7AutoInstallation.py``. Answer the questions...
+ 
 
 # Example Usage with Data Outside of Docker
 
