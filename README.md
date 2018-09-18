@@ -37,17 +37,23 @@ For example: ``./start-sbleginon.sh sbleginon sbleginon 192.168.0.4``
 
 First checks on the container.    
 - Check it's running ``docker ps -a`` should show **dockername** as running.
-- Ssh in. Type ``ssh -Y root@DOCKER-IP -p 2222``. Default root password is **docker**. 
-- Logged in as root, change the root password by typing ``passwd``.
+- Ssh in. Type ``ssh -Y root@DOCKER-IP -p 2222``. Default root password is **docker**. You can change it now or later on the installation.
 - Check you have **internet access** from inside. This is needed by the installer.``ping www.google.com``  
 - Check the web server. Visit [https://DOCKER-IP:8443](https://DOCKER-IP:8443) for SSL or [http://DOCKER-IP:8080](http://DOCKER-IP:8080) for no SSL.
 - Check phpMyadmin : visit [https://DOCKER-IP:8080/phpmyadmin](https://DOCKER-IP:8080/phpmyadmin)
 - Attach your shell to your container by running: ``docker exec -i -t dockername /bin/bash``
 
 Configuration of leginon in the docker-leginon.    
-- Configuration is done with the files inside the install folder. The install folder is shared, so everything you put there will be available inside the container. Check that you can "ls" it on both.
-- Ssh inside the container, run ``python centos7AutoInstallation.py``. This is a customized version of the [Autoinstaller CentOS](http://emg.nysbc.org/redmine/projects/leginon/wiki/Autoinstaller_for_CentOS) available on the [Complete Install](http://emg.nysbc.org/redmine/projects/leginon/wiki/Complete_Installation) official page. Don't forget to ask there for a *registration key*!   
-- My answers the questions GroEL and EMAN, Xmipp, Spider and Protomo is *N*  
+- Configuration is done with the files inside the **install** folder. Check that you can "ls" from inside and outside the docker.
+- Ssh to your container, cd to **install** and run ``./extra-config.sh``. Before running it, **you need to have a registration key**. What the script does, in this order   
+* Setup all the root **PASSWORDS**. 
+* Copy __config.inc.php.phpMyAdmin.docker__ to protect the phpmyadmin web interface
+* Copy __my.cnf.docker__ to setup the right cache limits 
+* Install missing packages via yum  
+* Run the php script __leginon-db-config.php__ to setup the database (it can fail)
+* Run the  __centos7AutoInstallation.py__  a wrap over the official[Autoinstaller CentOS](http://emg.nysbc.org/redmine/projects/leginon/wiki/Autoinstaller_for_CentOS) available on the [Complete Install](http://emg.nysbc.org/redmine/projects/leginon/wiki/Complete_Installation) page.
+* My answers the questions GroEL and EMAN, Xmipp, Spider and Protomo is **N**  
+* Copy __config.php.myamiweb.docker__ to initialize myamiweb (it will be configured later)
 
 **Time for a coffee..** the installation can take like 30 minutes. 
 
