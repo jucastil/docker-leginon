@@ -44,8 +44,8 @@ First checks on the container.
 - Attach your shell to your container by running: ``docker exec -i -t dockername /bin/bash``
 
 Configuration of leginon in the docker-leginon.    
-- Configuration is done with the files inside the **install** folder. Check that you can "ls" from inside and outside the docker.
-- Ssh to your container, cd to **install** and run ``./extra-config.sh``. Before running it, **you need to have a registration key**. 
+- Configuration is done with the files inside the **extra** folder. Check that you can "ls" from inside and outside the docker.
+- Ssh to your container, cd to **extra** and run ``./extra-config.sh``. Before running it, **you need to have a registration key**. 
 
 What ``./extra-config.sh`` does, in this order   
   * Setup all the root **PASSWORDS**. 
