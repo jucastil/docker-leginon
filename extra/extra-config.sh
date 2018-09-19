@@ -77,6 +77,14 @@ echo "	"
 echo "	Database User: usr_object, Database password: BIOLBIOL"
 echo "  "
 echo " 	It is recommended to restart the docker first"
-tput setaf 2;
-echo " ...BYE !!! "
+echo "  From outside: "
+echo " "
+echo " 	-------------------------------------"
+tput setaf 1;
+echo "	docker stop DOCKERNAME"
+echo "	docker start DOCKERNAME"
+echo ""
+echo " 	...REMEMBER THIS IS A DEFAULT CONFIGURATION"
 tput sgr0;
+echo " 	-------------------------------------"
+echo ""
