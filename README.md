@@ -2,7 +2,7 @@
 A leginon CentOS 7 docker with a leginon webserver (myamiweb).  
 The webserver is connected to a subnet (the **leginon** network).  
 The **leginon** network is in principle indepented of the working subnet, but it can be the same.  
-If you want to know more about leginon, please refer to the [Leginon Project Page](http://emg.nysbc.org/redmine/projects/leginon/wiki/Leginon_Homepage)
+If you want to know more about leginon, please refer to the [Leginon Project Page](http://emg.nysbc.org/redmine/projects/leginon/wiki/Leginon_Homepage).  
 To be running on Linux, Windows or Mac. Features:  
 - CentOS 7 Docker Container , Apache 2.4 (w/ SSL), MariaDB 10.1
 - PHP **5.6**, EXIM, ssh, phpMyAdmin, Git, Drush, NodeJS
