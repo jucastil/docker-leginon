@@ -1,3 +1,0 @@
-#!/usr/bin/python
-from fs.commands.fsmount import run
-run()

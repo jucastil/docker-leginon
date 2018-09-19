@@ -1,3 +1,0 @@
-#!/usr/bin/python
-from fs.commands.fsmkdir import run
-run()

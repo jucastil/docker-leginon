@@ -84,6 +84,8 @@ tput setaf 1;
 echo "	docker stop DOCKERNAME"
 echo "	docker start DOCKERNAME"
 echo ""
+echo "	ssh in again and run /extra/start_redux.sh"
+echo ""
 echo " 	...REMEMBER THIS IS A DEFAULT CONFIGURATION"
 tput sgr0;
 echo " 	-------------------------------------"

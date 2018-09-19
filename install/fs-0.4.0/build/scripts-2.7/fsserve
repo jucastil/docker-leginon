@@ -1,3 +1,0 @@
-#!/usr/bin/python
-from fs.commands.fsserve import run
-run()
