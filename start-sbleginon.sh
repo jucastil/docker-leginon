@@ -14,9 +14,9 @@ IP=$3
 
 docker run --name $NAME \
 	--hostname=$HOSTNAME \
-	-d -p 80:80 \
-	-p 443:443 \
-	-p 2222:22 \
+	-d -p $IP:80:80 \
+	-p $IP:443:443 \
+	-p $IP:2222:22 \
 	-v `pwd`/extra:/extra \
 	-v `pwd`/html:/var/www/html \
 	-v `pwd`/database:/var/lib/phpMyAdmin/upload \
