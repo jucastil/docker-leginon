@@ -17,6 +17,7 @@ docker run --name $NAME \
 	-d -p $IP:80:80 \
 	-p $IP:443:443 \
 	-p $IP:2222:22 \
+	-p $IP:3306:3306 \
 	-v `pwd`/extra:/extra \
 	-v `pwd`/html:/var/www/html \
 	-v `pwd`/database:/var/lib/phpMyAdmin/upload \
